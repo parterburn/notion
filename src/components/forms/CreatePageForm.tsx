@@ -120,7 +120,9 @@ export function CreatePageForm({ mutate, launchContext, defaults, accountId }: C
 
   useEffect(() => {
     if (lockedAccountId || launchContext?.accountId || initialDatabaseId) return;
-    getActiveAccountId().then(setActiveAccountId).catch(() => undefined);
+    getActiveAccountId()
+      .then(setActiveAccountId)
+      .catch(() => undefined);
   }, [lockedAccountId, launchContext?.accountId, initialDatabaseId]);
 
   const { itemProps, values, handleSubmit, reset, focus, setValue } = useForm<CreatePageFormValues>({

@@ -16,7 +16,7 @@ function Search() {
   const hasMultipleAccounts = accounts.length > 1;
 
   const { data, isLoading, pagination, mutate } = useCachedPromise(
-    (searchText: string, _accountKeys: string) =>
+    (searchText: string) =>
       async ({ cursor }) => {
         const cursorState = (() => {
           if (!cursor) return {};

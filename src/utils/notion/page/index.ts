@@ -48,7 +48,11 @@ export async function deletePage(pageId: string, accountId?: NotionAccountId) {
   }
 }
 
-export async function patchPage(pageId: string, properties: UpdatePageParameters["properties"], accountId?: NotionAccountId) {
+export async function patchPage(
+  pageId: string,
+  properties: UpdatePageParameters["properties"],
+  accountId?: NotionAccountId,
+) {
   try {
     const notion = await getNotionClient(accountId);
     const page = await notion.pages.update({

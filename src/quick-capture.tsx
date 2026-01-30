@@ -164,11 +164,14 @@ function QuickCapture({ launchContext }: QuickCaptureProps) {
         }
 
         if (selectedPage.object === "database") {
-          await createDatabasePage({
-            database: selectedPage.id,
-            content,
-            "property::title::title": pageDetail?.title,
-          }, accountId);
+          await createDatabasePage(
+            {
+              database: selectedPage.id,
+              content,
+              "property::title::title": pageDetail?.title,
+            },
+            accountId,
+          );
         }
 
         await showToast({ style: Toast.Style.Success, title: "Captured content to page" });
@@ -212,7 +215,9 @@ function QuickCapture({ launchContext }: QuickCaptureProps) {
 
   useEffect(() => {
     if (launchContext?.defaults?.accountId) return;
-    getActiveAccountId().then(setAccountId).catch(() => undefined);
+    getActiveAccountId()
+      .then(setAccountId)
+      .catch(() => undefined);
   }, [launchContext?.defaults?.accountId]);
 
   function getQuicklink(): Quicklink {

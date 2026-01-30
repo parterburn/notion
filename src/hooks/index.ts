@@ -240,11 +240,7 @@ export function useRecentPages() {
 }
 
 export function useSearchPages(query: string, accountId?: NotionAccountId) {
-  return useCachedPromise(
-    (searchText, accountId) => search(searchText, undefined, 25, accountId),
-    [query, accountId],
-    {
-      keepPreviousData: true,
-    },
-  );
+  return useCachedPromise((searchText, accountId) => search(searchText, undefined, 25, accountId), [query, accountId], {
+    keepPreviousData: true,
+  });
 }

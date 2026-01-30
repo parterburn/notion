@@ -29,16 +29,10 @@ function buildAccountLabel(label: string | undefined, fallback: string) {
 
 export function getNotionAccounts(): NotionAccount[] {
   const { authType, account1Label, account2Label } = getAuthPreferences();
-  const accounts: NotionAccount[] = [
-    { id: "account-1", label: buildAccountLabel(account1Label, "Account 1") },
-  ];
+  const accounts: NotionAccount[] = [{ id: "account-1", label: buildAccountLabel(account1Label, "Account 1") }];
 
   const hasSecondAccount =
-    authType === "oauth" &&
-    !!account1Label &&
-    account1Label.length > 0 &&
-    !!account2Label &&
-    account2Label.length > 0;
+    authType === "oauth" && !!account1Label && account1Label.length > 0 && !!account2Label && account2Label.length > 0;
 
   if (hasSecondAccount) {
     accounts.push({ id: "account-2", label: buildAccountLabel(account2Label, "Account 2") });

@@ -65,7 +65,9 @@ function AddTextToPage(props: LaunchProps<{ arguments: Arguments.AddTextToPage }
   const searchPages = data?.pages.filter((page) => page.object === "page");
 
   useEffect(() => {
-    getActiveAccountId().then(setAccountId).catch(() => undefined);
+    getActiveAccountId()
+      .then(setAccountId)
+      .catch(() => undefined);
   }, []);
 
   return (
